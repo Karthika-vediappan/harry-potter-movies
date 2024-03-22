@@ -1,0 +1,52 @@
+.movies-container {
+  margin: 2rem;
+  border: 1px solid gray;
+  padding: 1rem;
+}
+
+.movie-info {
+  display: flex;
+  align-items: center;
+  width: 80%;
+}
+
+.title {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.name {
+  margin-right: 0.5rem;
+}
+
+.mr-1 {
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back {
+  margin-bottom: 1rem;
+  cursor: pointer;
+  width: 5%;
+}
+
+.back-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.movie-information {
+  margin: 0 5rem;
+  border: 1px solid gray;
+  padding: 1rem;
+}

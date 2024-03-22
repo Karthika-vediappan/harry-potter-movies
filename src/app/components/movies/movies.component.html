@@ -1,0 +1,57 @@
+<div class="filter-section">
+  <span class="mb-1"><b>Filters:</b></span>
+  <div class="filters">
+    <div class="filter">
+      <label for="title" class="form-label">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        placeholder="Title"
+        [(ngModel)]="movieFilters.title"
+      />
+    </div>
+    <div class="releaseYearFilter">
+      <label for="releaseYear" class="form-label">Release Year</label>
+      <input
+        type="text"
+        class="form-control"
+        id="releaseYear"
+        placeholder="Release Year"
+        [(ngModel)]="movieFilters.release_date"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="movies-list">
+  <ng-container *ngFor="let movie of moviesList | movieFiletrs : movieFilters">
+    <div class="movies-container">
+      <div class="movies-info">
+        <div class="movie-name">
+          <p class="title">
+            {{ movie.title }}
+          </p>
+          <span
+            ><b class="name">Release Date:</b> {{ movie.release_date }}</span
+          >
+          <span class="mr-1 ml-1"
+            ><b class="name">Budget:</b> ${{ movie.budget }} {{' '}} million</span
+          >
+          <span class="mr-1"
+            ><b class="name">Duration:</b> {{ movie.duration }}</span
+          >
+        </div>
+      </div>
+      <div class="details-container">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="goToMovieDetails(movie.id)"
+        >
+          Details
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</div>

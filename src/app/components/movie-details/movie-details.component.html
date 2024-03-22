@@ -1,0 +1,86 @@
+<ng-container *ngIf="movieDetails?.id">
+  <div class="movies-container">
+    <div class="back">
+      <div (click)="goToMovies()" class="back-container">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="25"
+          height="25"
+          fill="currentColor"
+          class="bi bi-house"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"
+          />
+        </svg>
+        <b>Back</b>
+      </div>
+    </div>
+    <div class="movie-info">
+      <div class="movie-logo mr-1">
+        <img
+          id="movieLogo"
+          width="150"
+          height="150"
+          alt="movieLogo"
+          [src]="movieDetails.poster"
+        />
+      </div>
+      <div class="movie-name">
+        <p class="title">{{ movieDetails.title }}</p>
+        <span class="name"
+          ><b>Summary: </b>
+          <p>{{ movieDetails.summary }}</p></span
+        >
+      </div>
+    </div>
+    <div class="details-container">
+      <p class="details">Details</p>
+      <div class="movie-information">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row">Box Office</th>
+              <td>${{ movieDetails.box_office }} {{' '}}million</td>
+            </tr>
+            <tr>
+              <th scope="row">Budget</th>
+              <td>${{ movieDetails.budget }} {{' '}} million</td>
+            </tr>
+            <tr>
+              <th scope="row">Duration</th>
+              <td>{{ movieDetails.duration }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Producers</th>
+              <td>
+                <ng-container
+                  *ngFor="
+                    let producer of movieDetails.producers;
+                    let isLast = last
+                  "
+                >
+                  <span>{{ producer }}{{ isLast ? "" : "," }}</span>
+                </ng-container>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Cinematographers</th>
+              <td>
+                <ng-container
+                  *ngFor="
+                    let cinematographer of movieDetails.cinematographers;
+                    let isLast = last
+                  "
+                >
+                  <span>{{ cinematographer }}{{ isLast ? "" : "," }}</span>
+                </ng-container>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</ng-container>
