@@ -61,6 +61,14 @@ export class MoviesComponent implements OnInit, OnDestroy {
     return `${hours}h ${minutes}min`;
   }
 
+  numberOnly(event: KeyboardEvent): boolean {
+    const charCode = event.key;
+    if (charCode < '0' || charCode > '9') {
+      return false;
+    }
+    return true;
+  }
+
   ngOnDestroy(): void {
     this.subscriptions$.unsubscribe();
   }

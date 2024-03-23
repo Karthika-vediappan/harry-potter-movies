@@ -17,6 +17,7 @@
         type="text"
         class="form-control"
         id="releaseYear"
+        (keypress)="numberOnly($event)"
         placeholder="Release Year"
         [(ngModel)]="movieReleaseDate"
       />

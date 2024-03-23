@@ -18,6 +18,7 @@ export class MovieFiltersPipe implements PipeTransform {
     } else if (movieReleaseDate && !movieTitle) {
       return moviesList.filter((movie: Movies) =>
         movie.release_date
+          .split('-')[0]
           .toLowerCase()
           .includes(`${movieReleaseDate}`.toLocaleLowerCase())
       );
@@ -28,6 +29,7 @@ export class MovieFiltersPipe implements PipeTransform {
         )
         .filter((movie: Movies) =>
           movie.release_date
+            .split('-')[0]
             .toLowerCase()
             .includes(`${movieReleaseDate}`.toLocaleLowerCase())
         );
