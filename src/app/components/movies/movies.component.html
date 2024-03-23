@@ -8,7 +8,7 @@
         class="form-control"
         id="title"
         placeholder="Title"
-        [(ngModel)]="movieFilters.title"
+        [(ngModel)]="movieTitle"
       />
     </div>
     <div class="releaseYearFilter">
@@ -18,14 +18,18 @@
         class="form-control"
         id="releaseYear"
         placeholder="Release Year"
-        [(ngModel)]="movieFilters.release_date"
+        [(ngModel)]="movieReleaseDate"
       />
     </div>
   </div>
 </div>
 
 <div class="movies-list">
-  <ng-container *ngFor="let movie of moviesList | movieFiletrs : movieFilters">
+  <ng-container
+    *ngFor="
+      let movie of moviesList | movieFilters : movieTitle : movieReleaseDate
+    "
+  >
     <div class="movies-container">
       <div class="movies-info">
         <div class="movie-name">
@@ -36,10 +40,12 @@
             ><b class="name">Release Date:</b> {{ movie.release_date }}</span
           >
           <span class="mr-1 ml-1"
-            ><b class="name">Budget:</b> ${{ movie.budget }} {{' '}} million</span
+            ><b class="name">Budget:</b> ${{ movie.budget }}
+            {{ " " }} million</span
           >
           <span class="mr-1"
-            ><b class="name">Duration:</b> {{ movie.duration }}</span
+            ><b class="name">Duration:</b>
+            {{ getHoursAndMinutes(movie.duration) }}</span
           >
         </div>
       </div>
@@ -47,6 +53,7 @@
         <button
           type="button"
           class="btn btn-secondary"
+          id="{{ movie.id }}"
           (click)="goToMovieDetails(movie.id)"
         >
           Details

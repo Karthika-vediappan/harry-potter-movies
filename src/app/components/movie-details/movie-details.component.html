@@ -42,15 +42,15 @@
           <tbody>
             <tr>
               <th scope="row">Box Office</th>
-              <td>${{ movieDetails.box_office }} {{' '}}million</td>
+              <td>${{ movieDetails.box_office }} {{ " " }}million</td>
             </tr>
             <tr>
               <th scope="row">Budget</th>
-              <td>${{ movieDetails.budget }} {{' '}} million</td>
+              <td>${{ movieDetails.budget }} {{ " " }} million</td>
             </tr>
             <tr>
               <th scope="row">Duration</th>
-              <td>{{ movieDetails.duration }}</td>
+              <td>{{ getHoursAndMinutes(movieDetails.duration) }}</td>
             </tr>
             <tr>
               <th scope="row">Producers</th>
@@ -61,7 +61,7 @@
                     let isLast = last
                   "
                 >
-                  <span>{{ producer }}{{ isLast ? "" : "," }}</span>
+                  <span>{{ producer }}{{ isLast ? "" : " , " }}</span>
                 </ng-container>
               </td>
             </tr>
@@ -74,7 +74,7 @@
                     let isLast = last
                   "
                 >
-                  <span>{{ cinematographer }}{{ isLast ? "" : "," }}</span>
+                  <span>{{ cinematographer }}{{ isLast ? "" : " , " }}</span>
                 </ng-container>
               </td>
             </tr>

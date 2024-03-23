@@ -1,36 +1,35 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { MovieFilters, Movies } from '../models/movies';
+import { Movies } from '../models/movies';
 
 @Pipe({
-  name: 'movieFiletrs',
+  name: 'movieFilters',
   standalone: true,
-  pure: false,
 })
 export class MovieFiltersPipe implements PipeTransform {
-  transform(moviesList: Movies[], moviFilters: MovieFilters) {
-    if (!moviesList.length) {
-      return;
-    }
-    const { release_date, title } = moviFilters;
-    if (title && !release_date) {
+  transform(
+    moviesList: Movies[],
+    movieTitle: string,
+    movieReleaseDate: string
+  ): Movies[] {
+    if (movieTitle && !movieReleaseDate) {
       return moviesList.filter((movie: Movies) =>
-        movie.title.toLowerCase().includes(title.toLocaleLowerCase())
+        movie.title.toLowerCase().includes(movieTitle.toLocaleLowerCase())
       );
-    } else if (release_date && !title) {
+    } else if (movieReleaseDate && !movieTitle) {
       return moviesList.filter((movie: Movies) =>
         movie.release_date
           .toLowerCase()
-          .includes(`${release_date}`.toLocaleLowerCase())
+          .includes(`${movieReleaseDate}`.toLocaleLowerCase())
       );
-    } else if (title && release_date) {
+    } else if (movieTitle && movieReleaseDate) {
       return moviesList
         .filter((movie: Movies) =>
-          movie.title.toLowerCase().includes(title.toLocaleLowerCase())
+          movie.title.toLowerCase().includes(movieTitle.toLocaleLowerCase())
         )
         .filter((movie: Movies) =>
           movie.release_date
             .toLowerCase()
-            .includes(`${release_date}`.toLocaleLowerCase())
+            .includes(`${movieReleaseDate}`.toLocaleLowerCase())
         );
     } else {
       return moviesList;
