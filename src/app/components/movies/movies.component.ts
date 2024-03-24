@@ -55,10 +55,8 @@ export class MoviesComponent implements OnInit, OnDestroy {
     this.router.navigate(['/movies', id]);
   }
 
-  getHoursAndMinutes(count: number): string {
-    const minutes = count % 60;
-    const hours = (count - minutes) / 60;
-    return `${hours}h ${minutes}min`;
+  getHoursAndMinutes(count: string): string {
+    return this.moviesService.getHoursAndMinutes(Number(count));
   }
 
   numberOnly(event: KeyboardEvent): boolean {

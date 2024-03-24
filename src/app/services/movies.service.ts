@@ -15,4 +15,10 @@ export class MoviesService {
   getMovieDetails(id: string): Observable<MovieDetails> {
     return this.http.get<MovieDetails>(`/movies/${id}`);
   }
+
+  getHoursAndMinutes(count: number): string {
+    const minutes = count % 60;
+    const hours = (count - minutes) / 60;
+    return `${hours}h ${minutes}min`;
+  }
 }
